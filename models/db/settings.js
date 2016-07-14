@@ -3,6 +3,19 @@
  * 创建数据库连接
  * 该模块只会被加载一次
  */
+ 
+//服务器的mongodb
+
+var port = process.env.MONGODB_PORT_27017_TCP_PORT;
+var addr = process.env.MONGODB_PORT_27017_TCP_ADDR;
+var instance = process.env.MONGODB_INSTANCE_NAME;
+var password = process.env.MONGODB_PASSWORD;
+var username = process.env.MONGODB_USERNAME;
+
+
+var redis_password = process.env.REDIS_PASSWORD;
+var redis_addr = process.env.REDIS_PORT_6379_TCP_ADDR;
+var redis_port1 = process.env.REDIS_PORT_6379_TCP_PORT;
 
 module.exports = {
 
@@ -13,12 +26,12 @@ module.exports = {
     auth_cookie_name: 'doracms',
     encrypt_key : 'dora',
 //    数据库配置
-    URL: 'mongodb://127.0.0.1:27017/doracms',
-    DB: 'doracms',
+    URL: 'mongodb://' + username + ':' + password +'@' + addr + ':' + port + '/'+instance,
+    DB: instance,
     HOST: '',
-    PORT: 27017,
-    USERNAME: '',
-    PASSWORD: '',
+    PORT: port,
+    USERNAME: username,
+    PASSWORD: password,
 
 
 //    站点基础信息配置
@@ -68,9 +81,9 @@ module.exports = {
     regUsersList: ['userManage_user','注册用户管理'],
 
 //    本地缓存设置
-    redis_host: '127.0.0.1',
-    redis_port: 6379,
-    redis_psd : '',
+    redis_host: redis_addr,
+    redis_port: redis_port1,
+    redis_psd : redis_password,
     redis_db: 0,
 
 //    邮件相关设置
