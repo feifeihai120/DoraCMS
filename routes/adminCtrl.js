@@ -30,6 +30,7 @@ router.get("/",function(req,res,next){
 });
 
 //管理员主页
+/**
 router.get(["/manage","/manage/*"],function(req,res,next){
     if(isAdminLogined(req)){
         next();
@@ -37,6 +38,7 @@ router.get(["/manage","/manage/*"],function(req,res,next){
         res.redirect("/admin");
     }
 });
+**/
 
 //模块管理页面
 router.get('/manage/:targetPage', function(req, res, next) {
